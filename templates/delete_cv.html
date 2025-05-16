@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>تم حذف الحساب</title>
+    <style>
+        body { text-align: center; font-family: Arial; padding: 40px; }
+        h1 { color: red; }
+        a.btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚫 تم حذف حسابك</h1>
+    <p>نأسف لرؤيتك ترحل، نتمنى لك التوفيق في مستقبلك المهني.</p>
+    <a class="btn" href="{{ url_for('welcome') }}">العودة للصفحة الرئيسية</a>
+</body>
+</html>

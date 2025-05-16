@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>تم التسجيل بنجاح</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        h1 { color: #2ecc71; }
+        a.btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin-top: 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a.btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>شكراً لتسجيلك!</h1>
+    <p>تم استلام بياناتك بنجاح، وسنعمل على مساعدتك في إيجاد أفضل الفرص الوظيفية المناسبة لك.</p>
+    <a href="{{ url_for('welcome') }}" class="btn">العودة للصفحة الرئيسية</a>
+    <a href="{{ url_for('login') }}" class="btn">تسجيل الدخول</a>
+</body>
+</html>

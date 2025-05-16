@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>واجهة الباحثين عن عمل</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+<body>
+
+    <div class="blur-bg-overlay"></div>
+    <div class="form-popup">
+        <div class="form-box login">
+                <div class="form-details">
+                </div>
+            <div class="form-content">
+                    <h2>Signup</h2>
+                <form  method="POST"  action="{{ url_for('job_seekers') }}"  enctype="multipart/form-data">
+
+                    <div class="input-field">
+                      <input type="text" id="name" name="name" required><br><br>
+                      <label for="name">name</label><br>
+                    </div>
+                    <div class="input-field">
+                       <input type="email" id="email" name="email" required><br><br>
+                       <label for="email">email</label><br>
+                    </div>
+                    <div class="input-field">
+                       <input type="text" id="phone" name="phone" required><br><br>
+                       <label for="phone">phone </label><br>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" id="password" name="password" required><br><br>
+                        <label for="password">password</label><br>
+                    </div>
+                    <label for="resume">رفع السيرة الذاتية:</label><br>
+                    <input type="file" id="resume" name="resume" accept=".pdf,.docx" required><br><br>
+                      <button>Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% if success_message %}
+        <p style="color: green;">{{ success_message }}</p>
+    {% endif %}
+    
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+</body>
+</html>

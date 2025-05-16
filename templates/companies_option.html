@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خيارات الشركات</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <main class="container">
+        <div class="card">
+            
+            <img src="{{ url_for('static', filename='images (14).jpg') }}" class="card-img"alt="Icon" >
+            <p>يمكن للشركات بالتسجيل ووضع الوصف الوظيفي ة.</p>
+            <a href="{{ url_for('signup_companies') }}" class="btn">Sign Up</a>
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='images (15).jpg') }}" class="card-img" alt="Icon" >
+           <p>زيارة الملف الشخصي </p>
+            <a href="{{ url_for('login_companies') }}" class="btn">Log In</a>
+        </div>
+    </main>
+</body>
+</html>

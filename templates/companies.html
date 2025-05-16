@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>واجهة الشركات</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>واجهة الشركات</h1>
+
+    <form action="{{ url_for('companies') }}" method="post">
+        <label for="job_description">أدخل الوصف الوظيفي:</label>
+        <textarea id="job_description" name="job_description" rows="4" required></textarea>
+        <button type="submit">بحث</button>
+    </form>
+
+    {% if results %}
+        <h2>النتائج:</h2>
+        <table border="1">
+            <tr>
+                <th>الاسم</th>
+                <th>البريد الإلكتروني</th>
+                <th>نسبة التوافق</th>
+            </tr>
+            {% for name, email, match in results %}
+            <tr>
+                <td>{{ name }}</td>
+                <td>{{ email }}</td>
+                <td>{{ match }}%</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>

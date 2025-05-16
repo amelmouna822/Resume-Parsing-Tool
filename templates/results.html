@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتائج البحث</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>نتائج البحث</h1>
+
+    {% if results %}
+        <table border="1">
+            <tr>
+                <th>الاسم</th>
+                <th>البريد الإلكتروني</th>
+                <th>phone</th>
+                <th>نسبة التوافق</th>
+            </tr>
+            {% for name, email, phone, match in results %}
+            <tr>
+                <td>{{ name }}</td>
+                <td>{{ email }}</td>
+                <td>{{ phone }}</td>
+                <td>{{ match }}%</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>لم يتم العثور على أي سير ذاتية مطابقة.</p>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('companies') }}">العودة إلى صفحة الشركات</a>
+</body>
+</html>

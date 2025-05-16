@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل شركة جديدة</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+<body>
+
+    <div class="blur-bg-overlay"></div>
+    <div class="form-popup">
+        <div class="form-box login">
+                <div class="form-details">
+                </div>
+  <div class="form-content">
+    <h2>Signup</h2>
+
+    {% if error %}
+        <p style="color: red; text-align: center;">{{ error }}</p>
+    {% endif %}
+
+    <form method="post" action="{{ url_for('signup_companies') }}" enctype="multipart/form-data">
+        <div class="input-field">
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="name">name</label><br>
+        </div>
+        <div class="input-field">
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="email">email</label><br>
+        </div>
+        <div class="input-field">
+            <input type="password" id="password" name="password" required><br><br>
+            <label for="password">password</label><br>
+        </div>
+        <button type="submit" class="btn">Sign Up</button>
+    </form>
+</div>
+        </div>
+    </div>
+</body>
+</html>

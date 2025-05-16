@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>لوحة تحكم الشركة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .offer {
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .offer h3 {
+            margin: 0 0 10px;
+        }
+        .match {
+            margin-left: 20px;
+        }
+        .form-section {
+            margin-top: 40px;
+        }
+        input, textarea, button {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            background-color: #2196f3;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #1976d2;
+        }
+        .delete-button {
+            background-color: #f44336;
+            margin-top: 10px;
+        }
+        .delete-button:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>{{ company_name }}</h2>
+
+    <h3>عروضك السابقة:</h3>
+    {% for offer in previous_offers %}
+        <div class="offer">
+            <h3>{{ offer.title }}</h3>
+            <p>{{ offer.description }}</p>
+            <h4>السير الذاتية المتوافقة:</h4>
+            <ul>
+                {% for match in offer.matching_cvs %}
+                    <li>
+                        <strong>{{ match.name }}</strong> - {{ match.email }} - نسبة التوافق: {{ match.match_percent }}%
+                    </li>
+                {% endfor %}
+            </ul>
+            <form method="POST" action="{{ url_for('delete_offer') }}">
+                <input type="hidden" name="offer_id" value="{{ offer.id }}">
+                <button class="delete-button">حذف العرض</button>
+            </form>
+        </div>
+    {% endfor %}
+
+    <div class="form-section">
+        <h3>إضافة عرض وظيفي جديد</h3>
+        <form method="POST" action="{{ url_for('add_job_offer') }}">
+            <input type="text" name="job_title" placeholder="اسم الوظيفة" required>
+            <textarea name="job_description" placeholder="وصف الوظيفة" rows="5" required></textarea>
+            <button type="submit">إضافة العرض</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

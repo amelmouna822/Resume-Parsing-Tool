@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='welcom.css') }}">
+</head>   
+<body>
+    <header>
+        <div id="navbar">
+            <div class="logo-container">
+             <img src="{{ url_for('static', filename='images (5).jpeg') }}" alt="cv" >
+               <span >Résumé</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#Jobs">Jobs</a></li>
+                    <li><a href="#Testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h3>Best Jobs</h3>
+                        <h1>Welcome To Our Smart Platform </h1>
+                        <p> Our platform helps you analyze, sort,<br> 
+                            and match job seekers resumes with company job offers.<br>
+                           Sign up now to discover the best <br>
+                           opportunities that match your profile.</p>
+                        <div class="hero-buttons">
+                            <a href="{{ url_for('companies_option')}}" class="btn">Company Registration</a> 
+                            <a href="{{ url_for('condidat_options')}}" class="btn">Condidate Registration</a>                      
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="{{ url_for('static', filename='images (1).png') }}" alt="image">
+                    </div>
+                </div>
+            </div> 
+            
+    </header>
+    <main>
+
+
+
+        <section id="about">
+            <div class="container">
+                <div class="row">
+                    <img src="{{ url_for('static', filename='images (11).jpeg')}}" alt="About"> 
+                    <div class="about-content">
+                        <h2>About the Website</h2>
+                        <p>Welcome to our smart platform for analyzing and filtering résumés!<br>
+                          In today's recruitment world, many companies struggle with sorting <br>
+                          through thousands of résumés to select the most suitable candidates. <br>
+                          On the other hand, job seekers often find it difficult to access <br>
+                          opportunities that match their skills and experiences.<br>
+                           That's where the idea for this website came from.<br>
+                          This platform offers an innovative solution that combines<br>
+                           artificial intelligence and modern web technologies to assist both companies and job seekers.<br>
+                        </p>
+                        <div class="item">
+                            <h3>How Does It Work?</h3>
+                            <p>The website relies on Natural Language Processing (NLP)<br>
+                                 techniques to analyze résumé content, extracting skills, <br>
+                                 qualifications, and years of experience. <br>
+                                 This information is then matched with job offer requirements,<br>
+                                  and the system calculates a compatibility score and displays the results clearly.<br>
+                                </p>
+                        </div>
+                        <div class="item">
+                            <h3>Our Goal:</h3>
+                            <p> We aim to improve the hiring experience for both sides by:<br>
+                                Speeding up the recruitment process and reducing manual effort.<br>
+                                Ensuring better alignment between job roles and suitable candidates.<br>
+                                Promoting fairness in hiring through objective, data-driven analysi.<br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section id="Jobs">
+            <div class="container">
+                <div class="heading">
+                    <h2>Jobs</h2>
+                </div>
+                <div class="row">
+                    <div class="item">
+                        <h3>condor</h3>
+                        <p>fgresc hnhgdet </p>
+                    </div>
+                    <div class="item">
+                        <h3>amal</h3>
+                        <p>fgresc hnhgdet <br>
+                            jghgf jhtfi<br>
+                            jugfetu<br>
+                        </p>
+                    </div>
+                    <div class="item">
+                        <h3>damen</h3>
+                        <p>fgresc hnhgdet </p>
+                    </div>
+                    <div class="item">
+                        <h3>damen</h3>
+                        <p>fgresc hnhgdet </p>
+                    </div>
+                    <div class="item">
+                        <h3>damen</h3>
+                        <p>fgresc hnhgdet </p>
+                    </div>
+                    <div class="item">
+                        <h3>damen</h3>
+                        <p>fgresc hnhgdet </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="Testimonials">
+            <div class="container">
+                <div class="heading">
+                    <h2>What are our users saying about their experience with us?</h2>
+                    <p>"Trust built on the experience of others"</p>
+                </div>
+                <div class="row">
+                    <div class="item">
+                        <img src="{{ url_for('static', filename='person1.jpg')}}" alt="Mohamed Ramadan">
+                        <h3>Mohamed Ramadan</h3>
+                        <p>"Thanks to this platform,<br>
+                            I got my first job in filed within<br>
+                            just one week!."<br>
+                        </p>
+                    </div>
+                    <div class="item">
+                        <img src="{{ url_for('static', filename='person3.jpg')}}" alt="Mostafa Ashraf">
+                        <h3>Mostafa Ashaf</h3>
+                        <p>"I liked how my resume was analyzed  <br>
+                            accurately and how it suggested <br>
+                            jobs that perfectly matched me."<br>
+                        </p>
+                    </div>
+                    <div class="item">
+                        <img src="{{ url_for('static', filename='person4.jpg')}}" alt="Islam Mohamed">
+                        <h3>Islam Mohamed</h3>
+                        <p>"I had been loking for a job<br>
+                            that matched my skills for months,<br>
+                            and this platform finally helped <br>
+                            me find the right opportunity." <br>
+                            
+                        </p>
+                    </div>
+                    <div class="item">
+                        <img src="{{ url_for('static',filename='person2.jpg')}}" alt="Oussama Amara">
+                        <h3>Oussama Amara</h3>
+                        <p>"A simple and easy interface-<br>
+                            everything is clear.Uploading my resume<br>
+                            and selecting a specialty was very quick."<br>
+                        </p>
+                    </div>
+                    <div class="item">
+                        <img src="{{ url_for('static',filename='images (13).jpeg')}}" alt="Leena">
+                        <h3>Leena Hadid</h3>
+                        <p>"After I uploaded my resume,<br>
+                             I received a suitable job opportunity within a few days.<br>
+                              Thanks to the team behind this project!."<br>
+                        </p>
+                    </div>
+                    <div class="item">
+                        <img src="{{ url_for('static',filename='images (12).jpeg')}}" alt="Aymen Harach">
+                        <h3>Aymen Harach</h3>
+                        <p>"The platform's interface is simple and smooth,<br>
+                             and everything is clear from registration<br>
+                              to uploading the resume."<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="heading">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+</body>
+</html>    

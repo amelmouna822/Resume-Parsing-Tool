@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login Condidate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+<body>
+    <div class="blur-bg-overlay"></div>
+    <div class="form-popup">
+        <div class="form-box login">
+                <div class="form-details">
+                        <h2>Welcome Back</h2>
+                        <p>Please log in using your email and<br>
+                             password to access your company dashboard.</p>
+                </div>
+            <div class="form-content">
+                    <h2>LOGIN</h2>
+                <form action="{{ url_for('login_companies') }}" method="post" enctype="multipart/form-data">
+                    {% if error %}
+    <p style="color: red; text-align: center;">{{ error }}</p>
+{% endif %}
+
+  <div class="input-field">
+    <input type="text" id="email" name="email" required><br><br>
+    <label for="email">email</label><br>
+  </div>
+  <div class="input-field">
+    <input type="password" id="password" name="password" required><br><br>
+    <label for="password">Password</label><br>
+  </div>
+  <button type="submit" class="btn">Log In</button>
+
+</form>   
+            </div>
+        </div>
+    </div>
+
+</body>

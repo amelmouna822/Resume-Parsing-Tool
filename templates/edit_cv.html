@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>تعديل السيرة الذاتية</title>
+    <style>
+        body { font-family: Arial; text-align: center; padding: 40px; }
+        input[type="file"], button {
+            margin-top: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>تعديل السيرة الذاتية</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="resume">اختر ملف السيرة الذاتية الجديد (PDF أو DOCX):</label><br><br>
+        <input type="file" id="resume" name="resume" accept=".pdf,.docx" required><br><br>
+        <button type="submit">تحديث</button>
+    </form>
+</body>
+</html>

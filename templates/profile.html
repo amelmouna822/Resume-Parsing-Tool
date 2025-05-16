@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الملف الشخصي</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>👤 الملف الشخصي</h1>
+        <p><strong>الاسم:</strong> {{ user.name }}</p>
+        <p><strong>البريد الإلكتروني:</strong> {{ user.email }}</p>
+        <p><strong>رقم الهاتف:</strong> {{ user.phone }}</p>
+        <p><strong>محتوى السيرة الذاتية:</strong></p>
+        <div class="resume-box">
+            <pre>{{ user.text }}</pre>
+        </div>
+
+        <div class="buttons">
+            <a href="{{ url_for('edit_cv') }}"><button>✏️ تعديل السيرة الذاتية</button></a>
+            <a href="{{ url_for('delete_cv') }}"><button>🗑️ حذف السيرة الذاتية</button></a>
+        </div>
+        <a href="{{ url_for('logout') }}">
+         <button>🔓 تسجيل الخروج</button>
+        </a>
+    </div>
+</body>
+</html>
