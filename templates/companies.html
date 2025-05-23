@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>واجهة الشركات</h1>
+    <h1>Companies' interface</h1>
 
     <form action="{{ url_for('companies') }}" method="post">
-        <label for="job_description">أدخل الوصف الوظيفي:</label>
+        <label for="job_description">Enter the job description:</label>
         <textarea id="job_description" name="job_description" rows="4" required></textarea>
-        <button type="submit">بحث</button>
+        <button type="submit">Search</button>
     </form>
 
     {% if results %}

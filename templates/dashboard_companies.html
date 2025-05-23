@@ -71,34 +71,52 @@
 <div class="container">
     <h2>{{ company_name }}</h2>
 
-    <h3>عروضك السابقة:</h3>
+    <h3> Your previous offers:</h3>
     {% for offer in previous_offers %}
         <div class="offer">
             <h3>{{ offer.title }}</h3>
             <p>{{ offer.description }}</p>
-            <h4>السير الذاتية المتوافقة:</h4>
-            <ul>
-                {% for match in offer.matching_cvs %}
-                    <li>
-                        <strong>{{ match.name }}</strong> - {{ match.email }} - نسبة التوافق: {{ match.match_percent }}%
-                    </li>
-                {% endfor %}
-            </ul>
+            <h4>كل السير الذاتية المتاحة وتوافقها:</h4>
+<table style="width:100%; border-collapse: collapse;">
+    <thead>
+        <tr style="background:#f0f0f0;">
+            <th>الاسم</th>
+            <th>البريد الإلكتروني</th>
+            <th>رقم الهاتف</th>
+            <th>نسبة التوافق</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for match in offer.matching_cvs %}
+        <tr style="text-align: center;">
+            <td>{{ match.name }}</td>
+            <td>{{ match.email }}</td>
+            <td>{{ match.phone }}</td>
+            <td>{{ match.match_percent }}%</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
             <form method="POST" action="{{ url_for('delete_offer') }}">
                 <input type="hidden" name="offer_id" value="{{ offer.id }}">
-                <button class="delete-button">حذف العرض</button>
+                <button class="delete-button"> Delete the job offer</button>
             </form>
         </div>
     {% endfor %}
 
     <div class="form-section">
-        <h3>إضافة عرض وظيفي جديد</h3>
+        <h3>Add a new job offer</h3>
         <form method="POST" action="{{ url_for('add_job_offer') }}">
-            <input type="text" name="job_title" placeholder="اسم الوظيفة" required>
-            <textarea name="job_description" placeholder="وصف الوظيفة" rows="5" required></textarea>
-            <button type="submit">إضافة العرض</button>
+            <input type="text" name="job_title" placeholder="Job title" required>
+            <textarea name="job_description" placeholder="Job description" rows="5" required></textarea>
+            <button type="submit">Add the offer </button>
         </form>
     </div>
+</div>
+<div style="text-align: right;">
+    <a href="{{ url_for('logout_companies') }}">
+         <button>🔓 Log out </button>
+    </a>
 </div>
 </body>
 </html>

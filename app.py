@@ -4,6 +4,8 @@ from login import process_login
 from companies import process_company
 from database import insert_company
 from database import create_database, sqlite3
+from utils import match_resume_to_job
+
 create_database()
 
 app = Flask(__name__)
@@ -57,27 +59,30 @@ def dashboard_companies():
     conn = get_db_connection()
     company_id = session['company_id']
 
-    # استرجاع العروض السابقة
     offers = conn.execute(
         'SELECT * FROM job_offers WHERE company_id = ?', (company_id,)
     ).fetchall()
 
+    resumes = conn.execute('SELECT name, email, phone, text FROM resumes').fetchall()
+
     all_results = []
 
     for offer in offers:
-        # الحصول على السير الذاتية المتوافقة من قاعدة البيانات (مثال بسيط بالمطابقة الجزئية)
-        matches = conn.execute('''
-            SELECT r.name, r.email,
-            ROUND((LENGTH(?) * 100.0) / LENGTH(r.text)) AS match_percent
-            FROM resumes r
-            WHERE  r.text LIKE '%' || ? || '%'
-        ''', (offer['description'],  offer['description'])).fetchall()
+        matched = []
+        for r in resumes:  # ← هذا الآن داخل الحلقة
+            score = match_resume_to_job(r["text"], offer["description"])
+            matched.append({
+                "name": r["name"],
+                "email": r["email"],
+                "phone": r["phone"],
+                "match_percent": round(score, 2)
+            })
 
         all_results.append({
-            'id': offer['id'],  # مهم لحذف العرض
+            'id': offer['id'],
             'title': offer['title'],
             'description': offer['description'],
-            'matching_cvs': matches
+            'matching_cvs': matched
         })
 
     conn.close()
@@ -111,8 +116,20 @@ def profile():
     user_id = session['user_id']
     conn = get_db_connection()
     user = conn.execute('SELECT * FROM resumes WHERE id = ?', (session['user_id'],)).fetchone()
+    offers = conn.execute('''SELECT job_offers.title, job_offers.description, companies.name AS company_name, companies.email AS company_email FROM job_offers
+    JOIN companies ON job_offers.company_id = companies.id''').fetchall()
     conn.close()
-    return render_template("profile.html", user=user)
+    matches = []
+    for offer in offers:
+       match_score = match_resume_to_job(user['text'], offer['description'])
+       matches.append({
+        "company_name": offer["company_name"],
+        "company_email": offer["company_email"],
+        "job_title": offer["title"],
+        "job_description": offer["description"],
+        "match_percent": round(match_score, 2)
+    })
+    return render_template("profile.html", user=user, matches=matches)
 
 @app.route("/edit_cv", methods=["GET", "POST"])
 def edit_cv():
@@ -208,6 +225,12 @@ def delete_offer():
 def logout():
     session.pop("user_id", None)  # إزالة بيانات تسجيل الدخول من الجلسة
     return redirect(url_for("welcome"))  # أو يمكنك توجيهه إلى login مثلاً
+
+@app.route("/logout_companies")
+def logout_companies():
+    session.pop("company_id", None)
+    session.pop("company_name", None)
+    return redirect(url_for("welcome"))  # أو إلى صفحة login_companies لو تحب
 
 if __name__ == "__main__":
     app.run()

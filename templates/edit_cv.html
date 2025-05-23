@@ -8,15 +8,16 @@
         input[type="file"], button {
             margin-top: 20px;
             padding: 10px;
+            background-color: blue;
         }
     </style>
 </head>
 <body>
-    <h2>تعديل السيرة الذاتية</h2>
+    <h2>Edit the CV</h2>
     <form method="POST" enctype="multipart/form-data">
-        <label for="resume">اختر ملف السيرة الذاتية الجديد (PDF أو DOCX):</label><br><br>
+        <label for="resume">Select the new CV file (PDF أو DOCX):</label><br><br>
         <input type="file" id="resume" name="resume" accept=".pdf,.docx" required><br><br>
-        <button type="submit">تحديث</button>
+        <button type="submit">Update</button>
     </form>
 </body>
 </html>
